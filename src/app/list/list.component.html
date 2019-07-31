@@ -1,0 +1,41 @@
+<button style="margin:5px" class="action-button" (click)="getUserList()"> 
+  <i class="material-icons">perm_identity</i>Get Users</button>
+
+<button class="action-button" (click)="delUserList()">
+  <i class="material-icons">delete_sweep</i>Delete Users</button>
+
+<br>
+<br>
+
+<table *ngIf="userList">
+  <tr>
+    <th>Array Index</th>
+    <th>ID</th>
+    <th>Name</th>
+    <th>eMail Adresse</th>
+    <th>Actions</th>
+<!--  </tr>
+    <tr>
+    <td>{{userList[0]?.id}}</td>
+    <td>{{userList[0]?.name}}</td>
+    <td>{{userList[0]?.email}}</td>
+  <tr>
+  <tr>
+    <td>{{userList[1]?.id}}</td>
+    <td>{{userList[1]?.name}}</td>
+    <td>{{userList[1]?.email}}</td>
+  <tr> -->
+  <tr *ngFor="let user of userList let i=index">
+    <td>{{i}}</td>
+    <td>{{user?.id}}</td>
+    <td>{{user?.name}}</td>
+    <td>{{user?.email}}</td>
+    <td>
+        <button style="margin:5px" class="action-button" (click)="getDetail(user)">
+          <i class="material-icons">face</i>Details</button>
+       <button style="margin:5px" class="action-button" (click)="delUser(user, i)">
+          <i class="material-icons">delete_outline</i>Delete User</button>
+    </td>
+  </tr>
+
+</table>
